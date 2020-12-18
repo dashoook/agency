@@ -12,27 +12,27 @@ public class UserResource {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/users/{id}")
     public UserDTO getUserById(final @PathVariable Long id){
         return userService.getUserById(id);
     }
 
-    @GetMapping("/user")
-    public List<UserDTO> getUserById(){
+    @GetMapping("/users")
+    public List<UserDTO> getAllUsers(){
         return userService.getAllUsers();
     }
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     public UserDTO createUser(final @RequestBody UserDTO userDTO){
         return userService.createUser(userDTO);
     }
 
-    @PutMapping("/user")
+    @PutMapping("/users")
     public UserDTO getUserById(final @RequestBody UserDTO userDTO){
         return userService.updateUser(userDTO);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/users/{id}")
     public void deleteUserById(final @PathVariable Long id){
         userService.deleteUserById(id);
     }
