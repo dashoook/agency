@@ -18,11 +18,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserToUserDTOMapper userMapper;
 
-    public UserDTO getDummyUser(){
-        final User dummyUser = userRepository.getDummyUser();
-
-        return userMapper.toDto(dummyUser);
-    }
 
     @Override
     public UserDTO getUserById(final Long id) {

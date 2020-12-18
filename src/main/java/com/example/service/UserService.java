@@ -5,9 +5,6 @@ import com.example.dto.UserDTO;
 import java.util.List;
 
 public interface UserService {
-    UserDTO getDummyUser();
-
-
     UserDTO getUserById(Long id);
     List<UserDTO> getAllUsers();
     UserDTO createUser(UserDTO userDTO);
