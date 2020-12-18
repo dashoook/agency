@@ -3,6 +3,7 @@ package com.example.dto;
 import java.time.LocalDate;
 
 public class UserDTO {
+    private Long id;
     private String firstname;
     private String lastname;
     private LocalDate birth;
@@ -10,7 +11,8 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(final String firstname, final String lastname, final LocalDate birth) {
+    public UserDTO(final Long id, final String firstname, final String lastname, final LocalDate birth) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.birth = birth;
@@ -39,4 +41,11 @@ public class UserDTO {
         this.birth = birth;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(final Long id) {
+        this.id = id;
+    }
 }

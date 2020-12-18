@@ -11,6 +11,7 @@ public class UserToUserDTOMapper {
     public User toEntity(final UserDTO userDTO, final List<Order> orderList){
         final User user = new User();
 
+        user.setId(userDTO.getId());
         user.setFirstname(userDTO.getFirstname());
         user.setLastname(userDTO.getLastname());
         user.setBirth(userDTO.getBirth());
@@ -22,6 +23,7 @@ public class UserToUserDTOMapper {
     public UserDTO toDto(final User user){
         final UserDTO userDTO = new UserDTO();
 
+        userDTO.setId(user.getId());
         userDTO.setFirstname(user.getFirstname());
         userDTO.setLastname(user.getLastname());
         userDTO.setBirth(user.getBirth());
