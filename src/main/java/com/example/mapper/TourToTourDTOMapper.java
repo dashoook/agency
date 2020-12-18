@@ -2,6 +2,7 @@ package com.example.mapper;
 
 import com.example.dto.TourDTO;
 import com.example.models.Tour;
+import com.example.models.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,7 +12,7 @@ public class TourToTourDTOMapper {
 
         tour.setId(tourDTO.getId());
         tour.setPrice(tourDTO.getPrice());
-        tour.setTitle(tourDTO.getTitle());
+        tour.setCountry(tourDTO.getCountry());
 
         return tour;
     }
@@ -21,7 +22,7 @@ public class TourToTourDTOMapper {
 
         tourDTO.setId(tour.getId());
         tourDTO.setPrice(tour.getPrice());
-        tourDTO.setTitle(tour.getTitle());
+        tourDTO.setCountry(tour.getCountry());
 
         return tourDTO;
     }
