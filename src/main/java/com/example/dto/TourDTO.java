@@ -1,13 +1,15 @@
 package com.example.dto;
 
 public class TourDTO {
+    private Long id;
     private String title;
     private double price;
 
     public TourDTO() {
     }
 
-    public TourDTO(final String title, final double price) {
+    public TourDTO(final Long id, final String title, final double price) {
+        this.id = id;
         this.title = title;
         this.price = price;
     }
@@ -26,5 +28,13 @@ public class TourDTO {
 
     public void setPrice(final double price) {
         this.price = price;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(final Long id) {
+        this.id = id;
     }
 }

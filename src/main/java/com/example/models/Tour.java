@@ -1,13 +1,15 @@
 package com.example.models;
 
 public class Tour {
+    private Long id;
     private String title;
     private double price;
 
     public Tour() {
     }
 
-    public Tour(final String title, final double price) {
+    public Tour(final Long id, final String title, final double price) {
+        this.id = id;
         this.title = title;
         this.price = price;
     }
@@ -28,4 +30,11 @@ public class Tour {
         this.price = price;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(final Long id) {
+        this.id = id;
+    }
 }

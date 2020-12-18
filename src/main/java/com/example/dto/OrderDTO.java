@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.Map;
 
 public class OrderDTO {
+    private Long id;
     private LocalDate orderDate;
     private String userFirstname;
     private String userLastname;
@@ -14,7 +15,8 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
-    public OrderDTO(final LocalDate orderDate, final String userFirstname, final String userLastname, final Map<Tour, Integer> orderDetails) {
+    public OrderDTO(final Long id, final LocalDate orderDate, final String userFirstname, final String userLastname, final Map<Tour, Integer> orderDetails) {
+        this.id = id;
         this.orderDate = orderDate;
         this.userFirstname = userFirstname;
         this.userLastname = userLastname;
@@ -51,5 +53,13 @@ public class OrderDTO {
 
     public void setOrderDetails(final Map<Tour, Integer> orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(final Long id) {
+        this.id = id;
     }
 }

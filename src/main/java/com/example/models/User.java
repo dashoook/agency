@@ -52,4 +52,11 @@ public class User {
         this.orders = orders;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(final Long id) {
+        this.id = id;
+    }
 }

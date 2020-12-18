@@ -6,20 +6,22 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TourToTourDTOMapper {
-    public Tour toEntity(final TourDTO bookDTO){
+    public Tour toEntity(final TourDTO tourDTO){
         final Tour tour = new Tour();
 
-        tour.setPrice(bookDTO.getPrice());
-        tour.setTitle(bookDTO.getTitle());
+        tour.setId(tourDTO.getId());
+        tour.setPrice(tourDTO.getPrice());
+        tour.setTitle(tourDTO.getTitle());
 
         return tour;
     }
 
-    public TourDTO toDTO(final Tour book){
+    public TourDTO toDTO(final Tour tour){
         final TourDTO tourDTO = new TourDTO();
 
-        tourDTO.setPrice(book.getPrice());
-        tourDTO.setTitle(book.getTitle());
+        tourDTO.setId(tour.getId());
+        tourDTO.setPrice(tour.getPrice());
+        tourDTO.setTitle(tour.getTitle());
 
         return tourDTO;
     }
