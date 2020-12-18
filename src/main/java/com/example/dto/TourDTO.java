@@ -2,24 +2,24 @@ package com.example.dto;
 
 public class TourDTO {
     private Long id;
-    private String title;
+    private String country;
     private double price;
 
     public TourDTO() {
     }
 
-    public TourDTO(final Long id, final String title, final double price) {
+    public TourDTO(final Long id, final String country, final double price) {
         this.id = id;
-        this.title = title;
+        this.country = country;
         this.price = price;
     }
 
-    public String getTitle() {
-        return title;
+    public String getCountry() {
+        return country;
     }
 
-    public void setTitle(final String title) {
-        this.title = title;
+    public void setCountry(final String title) {
+        this.country = title;
     }
 
     public double getPrice() {

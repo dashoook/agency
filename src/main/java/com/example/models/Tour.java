@@ -2,7 +2,7 @@ package com.example.models;
 
 public class Tour {
     private Long id;
-    private String title;
+    private String country;
     private double price;
 
     public Tour() {
@@ -10,16 +10,16 @@ public class Tour {
 
     public Tour(final Long id, final String title, final double price) {
         this.id = id;
-        this.title = title;
+        this.country = title;
         this.price = price;
     }
 
-    public String getTitle() {
-        return title;
+    public String getCountry() {
+        return country;
     }
 
-    public void setTitle(final String title) {
-        this.title = title;
+    public void setCountry(final String title) {
+        this.country = title;
     }
 
     public double getPrice() {
