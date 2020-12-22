@@ -2,15 +2,11 @@ package com.example.request;
 
 import com.example.models.Order;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
 public class SignupRequest {
-    @NotBlank
-    @Size(min = 3, max = 20)
     private String username;
     private Long id;
     private String firstname;
@@ -19,8 +15,6 @@ public class SignupRequest {
     private List<Order> orders;
     private Set<String> role;
 
-    @NotBlank
-    @Size(min = 6, max = 40)
     private String password;
 
     public String getUsername() {
