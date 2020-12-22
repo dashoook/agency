@@ -5,14 +5,12 @@ import com.example.models.User;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
 public class UserRepository {
-
     @PostConstruct
     public void init(){
         savedUsers = new ArrayList<>();
@@ -20,6 +18,18 @@ public class UserRepository {
 
     private static Long lastId = 1L;
     private List<User> savedUsers;
+
+    public User findByUsername(String username) {
+        return savedUsers.stream()
+                .filter(e -> e.getUsername().equals(username))
+                .findFirst()
+                .orElseThrow(() -> new ServiceException(400, "User with this username not found", null));
+    }
+
+    public Boolean existsByUsername(String username) {
+        return null;
+    }
+
 
     public User getUserById(final Long id){
         return savedUsers.stream()

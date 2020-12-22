@@ -15,12 +15,13 @@
     </parent>
 
     <properties>
-        <maven.compiler.source>1.15</maven.compiler.source>
-        <maven.compiler.target>1.15</maven.compiler.target>
+        <maven.compiler.source>1.14</maven.compiler.source>
+        <maven.compiler.target>1.14</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -35,6 +36,21 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -44,7 +60,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>15</release>
+                    <release>14</release>
                 </configuration>
             </plugin>
             <plugin>
