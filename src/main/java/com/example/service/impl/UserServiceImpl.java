@@ -7,6 +7,8 @@ import com.example.models.User;
 import com.example.repository.UserRepository;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -54,5 +56,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(final Long id) {
         userRepository.deleteUserById(id);
+    }
+
+    @Override
+    public UserDTO loadUserByUsername(String username) throws UsernameNotFoundException {
+        return  userMapper.toDto(userRepository.findByUsername(username));
     }
 }

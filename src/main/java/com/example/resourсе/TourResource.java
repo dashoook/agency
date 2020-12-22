@@ -46,6 +46,7 @@ public class TourResource {
     public void deleteToursByCountry(final @PathVariable String country){
         tourService.deleteToursByCountry(country);
     }
+
     @GetMapping("/toursbylowerprice/{price}")
     public List<TourDTO> getAllToursByPriceLower(final @PathVariable int price){
         return tourService.getAllToursByPriceLower(price);

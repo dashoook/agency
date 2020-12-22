@@ -15,6 +15,8 @@ public class UserToUserDTOMapper {
         user.setFirstname(userDTO.getFirstname());
         user.setLastname(userDTO.getLastname());
         user.setBirth(userDTO.getBirth());
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(userDTO.getPassword());
         user.setOrders(orderList);
 
         return user;
@@ -27,6 +29,9 @@ public class UserToUserDTOMapper {
         userDTO.setFirstname(user.getFirstname());
         userDTO.setLastname(user.getLastname());
         userDTO.setBirth(user.getBirth());
+        userDTO.setUsername(user.getUsername());
+        userDTO.setPassword(user.getPassword());
+        userDTO.setOrders(user.getOrders());
 
         return userDTO;
     }

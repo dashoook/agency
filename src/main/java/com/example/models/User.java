@@ -1,25 +1,34 @@
 package com.example.models;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class User {
     private Long id;
+    private String username;
     private String firstname;
     private String lastname;
     private LocalDate birth;
+    private String password;
+
+    private Set<Role> roles = new HashSet<>();
 
     private List<Order> orders;
 
     public User() {
     }
 
-    public User(final Long id,final String firstname, final String lastname, final LocalDate birth, final List<Order> orders) {
+    public User(final Long id,final String username, final String firstname, final String lastname, final LocalDate birth,
+                final List<Order> orders,final String password) {
         this.id = id;
+        this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
         this.birth = birth;
         this.orders = orders;
+        this.password = password;
     }
     public String getFirstname() {
         return firstname;
@@ -58,5 +67,27 @@ public class User {
 
     public void setId(final Long id) {
         this.id = id;
+    }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
