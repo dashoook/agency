@@ -17,15 +17,13 @@ public class JwtResponse {
 
 
     public JwtResponse(String accessToken, Long id, String username,  final String firstname, final String lastname,
-                       final LocalDate birth,
-                       List<String> roles) {
+                       final LocalDate birth, List<String> roles) {
         this.token = accessToken;
         this.id = id;
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
         this.birth = birth;
-
         this.roles = roles;
     }
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 @Component
 public class UserToUserDTOMapper {
-    public User toEntity(final UserDTO userDTO, final List<Order> orderList){
+    public User toEntity(final UserDTO userDTO){
         final User user = new User();
 
         user.setId(userDTO.getId());
@@ -17,7 +17,7 @@ public class UserToUserDTOMapper {
         user.setBirth(userDTO.getBirth());
         user.setUsername(userDTO.getUsername());
         user.setPassword(userDTO.getPassword());
-        user.setOrders(orderList);
+        //user.setOrders(orderList);
 
         return user;
     }

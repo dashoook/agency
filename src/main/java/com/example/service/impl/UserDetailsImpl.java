@@ -8,14 +8,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
-
+    private static final long serialVersionUID = 1L;
     final private Long id;
 
     final private String username;
@@ -24,8 +21,7 @@ public class UserDetailsImpl implements UserDetails {
     final private LocalDate birth;
     @JsonIgnore
     final private String password;
-
-    final private Collection<? extends GrantedAuthority> authorities;
+    private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(Long id, String username, final String firstname, final String lastname,
                            final LocalDate birth, String password,
@@ -72,6 +68,12 @@ public class UserDetailsImpl implements UserDetails {
         return firstname;
     }
 
+
+
+    public void setAuthorities(Set<GrantedAuthority> authorities)
+    {
+        this.authorities=authorities;
+    }
 
     @Override
     public String getPassword() {

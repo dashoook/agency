@@ -1,5 +1,9 @@
 package com.example.controllers;
 
+import com.example.dto.RoleDTO;
+import com.example.dto.UserDTO;
+import com.example.mapper.RoleToRoleDTOMapper;
+import com.example.mapper.UserToUserDTOMapper;
 import com.example.models.ERole;
 import com.example.models.Role;
 import com.example.models.User;
@@ -10,13 +14,17 @@ import com.example.request.LoginRequest;
 import com.example.request.SignupRequest;
 import com.example.responce.JwtResponse;
 import com.example.responce.MessageResponse;
+import com.example.service.UserService;
 import com.example.service.impl.UserDetailsImpl;
+import com.example.service.impl.UserServiceImpl;
 import com.example.service.jwt.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +53,15 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
+    @Autowired
+    private UserToUserDTOMapper userMapper;
+
+    @Autowired
+    private RoleToRoleDTOMapper roleMapper;
+
+    @Autowired
+    private UserService userService;
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
 
@@ -56,8 +73,9 @@ public class AuthController {
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
-                .map(item -> item.getAuthority())
+                .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
+        System.out.println(userDetails.getAuthorities());
 
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
@@ -69,56 +87,46 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+    public String registerUser(@RequestBody SignupRequest signUpRequest) {
+        if (userRepository.existsByUsername(signUpRequest.getUsername())) {//works
+            return "Error: Username is already taken!";
         }
 
-
         // Create new user's account
-        User user = new User(signUpRequest.getId(),
+        UserDTO user = new UserDTO(signUpRequest.getId(),
                 signUpRequest.getUsername(),
                 signUpRequest.getFirstname(),
                 signUpRequest.getLastname(),
                 signUpRequest.getBirth(),
-                signUpRequest.getOrders(),
                 encoder.encode(signUpRequest.getPassword()));
 
         Set<String> strRoles = signUpRequest.getRole();
-        Set<Role> roles = new HashSet<>();
+        Set<RoleDTO> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-            roles.add(userRole);
+            Role userRole = roleRepository.findByName(ERole.ROLE_USER);
+            roles.add(roleMapper.toDto(userRole));
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
-                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(adminRole);
-
+                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN);
+                        roles.add(roleMapper.toDto(adminRole));
                         break;
                     case "mod":
-                        Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(modRole);
-
+                        Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR);
+                        roles.add(roleMapper.toDto(modRole));
                         break;
                     default:
-                        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(userRole);
+                        Role userRole = roleRepository.findByName(ERole.ROLE_USER);
+                        roles.add(roleMapper.toDto(userRole));
                 }
             });
         }
-
         user.setRoles(roles);
-        //  userRepository.save(user);
-        userRepository.updateUser(user);
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+      //  userRepository.createUser(userMapper.toEntity(user));
+        userService.createUser(user);
+
+        return "User registered successfully!";
     }
 }

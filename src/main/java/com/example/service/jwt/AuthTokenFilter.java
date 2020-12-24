@@ -1,6 +1,8 @@
 package com.example.service.jwt;
 
+import com.example.dto.UserDTO;
 import com.example.service.UserDetailsService;
+import com.example.service.impl.UserDetailsImpl;
 import com.example.service.impl.UserDetailsServiceImpl;
 import com.example.service.impl.UserServiceImpl;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -36,9 +38,9 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 String username = jwtUtils.getUserNameFromJwtToken(jwt);
 
-                UserDetails userDetails =  userDetailsService.loadUserByUsername(username);
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
+                        userDetails,null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);

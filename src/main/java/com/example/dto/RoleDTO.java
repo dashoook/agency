@@ -5,7 +5,7 @@ import com.example.models.ERole;
 public class RoleDTO {
     private Long id;
 
-    //   @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     private ERole name;
 
     public RoleDTO() {
@@ -30,4 +30,5 @@ public class RoleDTO {
     public void setName(ERole name) {
         this.name = name;
     }
+
 }

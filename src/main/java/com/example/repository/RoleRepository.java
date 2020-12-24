@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import com.example.exception.ServiceException;
 import com.example.models.ERole;
 import com.example.models.Role;
 import com.example.models.Tour;
@@ -18,8 +19,10 @@ public class RoleRepository  {
     }
 
     private static Long lastId = 1L;
-    private List<Tour> savedRoles;
-    public Optional<Role> findByName(ERole name){
-        return null;
+    private List<ERole> savedRoles;
+    public Role findByName(ERole name){
+        Role role = new Role(name);
+        return role;
     }
+
 }

@@ -1,10 +1,12 @@
 package com.example.models;
 
 
+import javax.xml.bind.annotation.XmlEnumValue;
+
 public class Role {
     private Long id;
 
- //   @Enumerated(EnumType.STRING)
+   // @Enumerated(EnumType.STRING)
     private ERole name;
 
     public Role() {
@@ -30,5 +32,10 @@ public class Role {
 
     public void setName(ERole name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name.toString();
     }
 }

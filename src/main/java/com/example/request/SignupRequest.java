@@ -12,7 +12,6 @@ public class SignupRequest {
     private String firstname;
     private String lastname;
     private LocalDate birth;
-    private List<Order> orders;
     private Set<String> role;
 
     private String password;
@@ -62,13 +61,6 @@ public class SignupRequest {
 
     public void setRole(Set<String> role) {
         this.role = role;
-    }
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(final List<Order> orders) {
-        this.orders = orders;
     }
 
     public Long getId() {

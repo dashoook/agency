@@ -16,13 +16,21 @@ public class UserDTO {
     private LocalDate birth;
     private String password;
 
-    private Set<Role> roles = new HashSet<>();
+    private Set<RoleDTO> roles = new HashSet<>();
 
     private List<Order> orders;
 //tour add
     public UserDTO() {
     }
-
+    public UserDTO(final Long id,final String username, final String firstname, final String lastname, final LocalDate birth,
+                   final String password) {
+        this.id = id;
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birth = birth;
+        this.password = password;
+    }
     public UserDTO(final Long id,final String username, final String firstname, final String lastname, final LocalDate birth,
                    final List<Order> orders,final String password) {
         this.id = id;
@@ -86,11 +94,12 @@ public class UserDTO {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
+    public Set<RoleDTO> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<RoleDTO> roles) {
         this.roles = roles;
     }
+
 }
