@@ -11,7 +11,7 @@ public class RoleToRoleDTOMapper {
         final Role role = new Role();
 
         role.setId(roleDTO.getId());
-        role.setName(roleDTO.getName());
+       // role.setName(roleDTO.getName());
 
 
         return role;
@@ -21,7 +21,7 @@ public class RoleToRoleDTOMapper {
         final RoleDTO roleDTO = new RoleDTO();
 
         roleDTO.setId(role.getId());
-        roleDTO.setName(role.getName());
+       // roleDTO.setName(role.getName());
 
         return roleDTO;
     }

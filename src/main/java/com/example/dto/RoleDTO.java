@@ -5,13 +5,13 @@ import com.example.models.ERole;
 public class RoleDTO {
     private Long id;
 
-    //@Enumerated(EnumType.STRING)
-    private ERole name;
+//    @Enumerated(EnumType.STRING)
+    private ERoleDTO name;
 
     public RoleDTO() {
     }
 
-    public RoleDTO(ERole name) {
+    public RoleDTO(ERoleDTO name) {
         this.name = name;
     }
 
@@ -23,11 +23,11 @@ public class RoleDTO {
         this.id = id;
     }
 
-    public ERole getName() {
+    public ERoleDTO getName() {
         return name;
     }
 
-    public void setName(ERole name) {
+    public void setName(ERoleDTO name) {
         this.name = name;
     }
 

@@ -2,6 +2,7 @@ package com.example.service.impl;
 
 import com.example.dto.UserDTO;
 import com.example.mapper.UserToUserDTOMapper;
+import com.example.models.User;
 import com.example.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	//@Transactional
 	public UserDetails loadUserByUsername(String username)  {
-		UserDTO user = userMapper.toDto(userRepository.findByUsername(username));
+		User user = userRepository.findByUsername(username);
 				//.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 		//User user = userRepository.findByUsername(username);
-		return UserDetailsImpl.build(user);
+		return UserDetailsImpl.build(userMapper.toDto(user));
 	}
 
 }

@@ -30,6 +30,17 @@ public class User {
         this.orders = orders;
         this.password = password;
     }
+    public User(final Long id,final String username, final String firstname, final String lastname, final LocalDate birth,
+                final List<Order> orders,final String password, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birth = birth;
+        this.orders = orders;
+        this.password = password;
+        this.roles = roles;
+    }
     public String getFirstname() {
         return firstname;
     }

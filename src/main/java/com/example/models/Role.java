@@ -1,6 +1,8 @@
 package com.example.models;
 
 
+import com.example.dto.ERoleDTO;
+
 import javax.xml.bind.annotation.XmlEnumValue;
 
 public class Role {
@@ -10,11 +12,9 @@ public class Role {
     private ERole name;
 
     public Role() {
-
     }
 
     public Role(ERole name) {
-
         this.name = name;
     }
 
@@ -34,8 +34,8 @@ public class Role {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return name.toString();
-    }
+//    @Override
+//    public String toString() {
+//        return name.toString();
+//    }
 }

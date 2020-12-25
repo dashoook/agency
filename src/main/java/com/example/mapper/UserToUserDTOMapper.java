@@ -17,6 +17,7 @@ public class UserToUserDTOMapper {
         user.setBirth(userDTO.getBirth());
         user.setUsername(userDTO.getUsername());
         user.setPassword(userDTO.getPassword());
+        user.setRoles(userDTO.getRoles());
         //user.setOrders(orderList);
 
         return user;
@@ -32,6 +33,7 @@ public class UserToUserDTOMapper {
         userDTO.setUsername(user.getUsername());
         userDTO.setPassword(user.getPassword());
         userDTO.setOrders(user.getOrders());
+        userDTO.setRoles(user.getRoles());
 
         return userDTO;
     }

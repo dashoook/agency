@@ -1,5 +1,6 @@
 package com.example.dto;
 
+import com.example.models.ERole;
 import com.example.models.Order;
 import com.example.models.Role;
 
@@ -16,7 +17,7 @@ public class UserDTO {
     private LocalDate birth;
     private String password;
 
-    private Set<RoleDTO> roles = new HashSet<>();
+    private Set<Role> role = new HashSet<>();
 
     private List<Order> orders;
 //tour add
@@ -41,6 +42,18 @@ public class UserDTO {
         this.orders = orders;
         this.password = password;
     }
+
+    public UserDTO(final Long id, final String username, final String firstname, final String lastname,
+                   final LocalDate birth, final String password, final Set<Role> role) {
+        this.id = id;
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birth = birth;
+        this.password = password;
+        this.role = role;
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -94,12 +107,12 @@ public class UserDTO {
         this.password = password;
     }
 
-    public Set<RoleDTO> getRoles() {
-        return roles;
+    public Set<Role> getRoles() {
+        return role;
     }
 
-    public void setRoles(Set<RoleDTO> roles) {
-        this.roles = roles;
+    public void setRoles(Set<Role> roles) {
+        this.role = roles;
     }
 
 }

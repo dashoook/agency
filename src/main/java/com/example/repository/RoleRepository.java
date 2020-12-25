@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import com.example.dto.ERoleDTO;
 import com.example.exception.ServiceException;
 import com.example.models.ERole;
 import com.example.models.Role;
@@ -21,7 +22,9 @@ public class RoleRepository  {
     private static Long lastId = 1L;
     private List<ERole> savedRoles;
     public Role findByName(ERole name){
+        ++lastId;
         Role role = new Role(name);
+        role.setId(lastId);
         return role;
     }
 

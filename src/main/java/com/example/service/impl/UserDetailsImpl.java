@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.dto.RoleDTO;
 import com.example.dto.UserDTO;
 import com.example.models.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,8 +25,7 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(Long id, String username, final String firstname, final String lastname,
-                           final LocalDate birth, String password,
-                           Collection<? extends GrantedAuthority> authorities) {
+                           final LocalDate birth, String password, Collection<? extends GrantedAuthority> authorities) {//Collection<? extends GrantedAuthority> authorities
         this.id = id;
         this.username = username;
         this.firstname = firstname;
@@ -47,7 +47,8 @@ public class UserDetailsImpl implements UserDetails {
                 user.getLastname(),
                 user.getBirth(),
                 user.getPassword(),
-                authorities);
+                authorities
+        );
     }
 
     @Override
@@ -68,12 +69,10 @@ public class UserDetailsImpl implements UserDetails {
         return firstname;
     }
 
-
-
-    public void setAuthorities(Set<GrantedAuthority> authorities)
-    {
-        this.authorities=authorities;
-    }
+   // public void setAuthorities(Set<GrantedAuthority> authorities)
+   // {
+     //   this.authorities=authorities;
+    //}
 
     @Override
     public String getPassword() {
