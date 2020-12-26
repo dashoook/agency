@@ -3,6 +3,7 @@ package com.example.resourсе;
 import com.example.dto.TourDTO;
 import com.example.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,21 +29,25 @@ public class TourResource {
     }
 
     @PostMapping("/tours")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public TourDTO createTour(final @RequestBody TourDTO tourDTO){
         return tourService.createTour(tourDTO);
     }
 
     @PutMapping("/tours")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public TourDTO updateTour(final @RequestBody TourDTO tourDTO){
         return tourService.updateTour(tourDTO);
     }
 
     @DeleteMapping("/tour/{id}")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public void deleteTourById(final @PathVariable Long id){
         tourService.deleteTourById(id);
     }
 
     @DeleteMapping("/tours/{country}")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public void deleteToursByCountry(final @PathVariable String country){
         tourService.deleteToursByCountry(country);
     }

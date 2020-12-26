@@ -5,6 +5,7 @@ import com.example.dto.UserDTO;
 import com.example.exception.ServiceException;
 import com.example.models.Order;
 import com.example.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -20,9 +21,17 @@ public class OrderRepository {
         savedOrders = new ArrayList<>();
     }
 
+    @Autowired
+    private UserRepository userRepository;
     private static Long lastId = 1L;
     private List<Order> savedOrders;
 
+    public List<Order> getOrdersByUserId(final Long id){
+
+        final User user = userRepository.getUserById(id);
+
+        return user.getOrders();
+    }
     public Order getOrderById(final Long id){
         return savedOrders.stream()
                 .filter(e -> e.getId().equals(id))
@@ -41,7 +50,7 @@ public class OrderRepository {
 
         ++lastId;
         order.setId(lastId);
-
+        order.getUser().getOrders().add(order);
         savedOrders.add(order);
 
         return order;
@@ -70,7 +79,7 @@ public class OrderRepository {
         savedOrders.stream()
                 .filter(e -> e.getId().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new ServiceException(400, "User with id: " + id + " not found ", null));
+                .orElseThrow(() -> new ServiceException(400, "Order with id: " + id + " not found ", null));
 
         savedOrders = savedOrders.stream()
                 .filter(e -> !e.getId().equals(id))

@@ -1,21 +1,25 @@
 package com.example.models;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Order {
     private Long id;
     private LocalDate orderDate;
     private User user;
-    private Map<Tour, Integer> orderDetails;
+    private boolean wasPaid = false;
+    private Map<Tour, Integer> orderDetails = new HashMap<>();
 
     public Order() {
     }
 
-    public Order(final Long id, final LocalDate orderDate, final User user, final Map<Tour, Integer> orderDetails) {
+    public Order(final Long id, final LocalDate orderDate, final User user, final boolean wasPaid, final Map<Tour,
+            Integer> orderDetails) {
         this.id = id;
         this.orderDate = orderDate;
         this.user = user;
+        this.wasPaid = wasPaid;
         this.orderDetails = orderDetails;
     }
 
@@ -49,5 +53,13 @@ public class Order {
 
     public void setId(final Long id) {
         this.id = id;
+    }
+
+    public boolean isWasPaid() {
+        return wasPaid;
+    }
+
+    public void setWasPaid(final boolean wasPaid) {
+        this.wasPaid = wasPaid;
     }
 }
