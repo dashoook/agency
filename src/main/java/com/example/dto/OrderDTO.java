@@ -1,6 +1,10 @@
 package com.example.dto;
 
+import com.example.mapper.UserToUserDTOMapper;
 import com.example.models.Tour;
+import com.example.models.User;
+import com.example.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -8,15 +12,15 @@ import java.util.Map;
 public class OrderDTO {
     private Long id;
     private LocalDate orderDate;
-    private Long tourID;
+    private Long userID;
 
     public OrderDTO() {
     }
 
-    public OrderDTO(final Long id, final LocalDate orderDate, final Long tourID){
+    public OrderDTO(final Long id, final LocalDate orderDate, final Long userID){
         this.id = id;
         this.orderDate = orderDate;
-        this.tourID = tourID;
+        this.userID = userID;
     }
 
     public LocalDate getOrderDate() {
@@ -35,11 +39,21 @@ public class OrderDTO {
         this.id = id;
     }
 
-    public Long getTourID() {
-        return tourID;
+    public Long getUserID() {
+        return userID;
     }
 
-    public void setTourID(final Long tourID) {
-        this.tourID = tourID;
+    public void setUserID(final Long userID) {
+        this.userID = userID;
     }
+
+//    public void setUser(User user){
+//        user = userRepository.getUserById(id);
+//        this.user = user;
+//    }
+//
+//    public User getUser(final Long id) {
+//        final User user = userRepository.getUserById(id);
+//        return user;
+//    }
 }

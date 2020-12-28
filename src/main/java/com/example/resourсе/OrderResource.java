@@ -3,6 +3,8 @@ package com.example.resourсе;
 import com.example.dto.OrderDTO;
 import com.example.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +24,7 @@ public class OrderResource {
         return orderService.getAllOrders();
     }
 
-    @PostMapping("/orders")
+    @PostMapping(value = "/orders")
     public OrderDTO createOrder(final @RequestBody OrderDTO orderDTO){
         return orderService.createOrder(orderDTO);
     }

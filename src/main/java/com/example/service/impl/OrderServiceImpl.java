@@ -1,9 +1,11 @@
 package com.example.service.impl;
 
 import com.example.dto.OrderDTO;
+import com.example.dto.UserDTO;
 import com.example.exception.ServiceException;
 import com.example.mapper.OrderToOrderDTOMapper;
 import com.example.mapper.UserToUserDTOMapper;
+import com.example.models.User;
 import com.example.repository.OrderRepository;
 import com.example.repository.UserRepository;
 import com.example.service.OrderService;
@@ -20,6 +22,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderToOrderDTOMapper orderMapper;
+
+    @Autowired
+    private UserRepository userRepository;
+
 
     @Override
     public OrderDTO getOrderById(final Long id) {
@@ -38,8 +44,8 @@ public class OrderServiceImpl implements OrderService {
         if(orderDTO.getId() != null){
             throw new ServiceException(400, "Order shouldn't have an id ", null);
         }
-
-        return orderMapper.toDTO(orderRepository.createOrder(orderMapper.toEntity(orderDTO, null)));
+        return orderMapper.toDTO(orderRepository.createOrder(orderMapper.toEntity(orderDTO,
+                userRepository.getUserById(orderDTO.getUserID()))));
     }
 
     @Override

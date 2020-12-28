@@ -1,7 +1,5 @@
 package com.example.repository;
 
-import com.example.dto.OrderDTO;
-import com.example.dto.UserDTO;
 import com.example.exception.ServiceException;
 import com.example.models.Order;
 import com.example.models.User;

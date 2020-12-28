@@ -1,6 +1,7 @@
 package com.example.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +16,7 @@ public class User {
 
     private Set<Role> roles = new HashSet<>();
 
-    private List<Order> orders;
+    private List<Order> orders  = new ArrayList<>();
 
     public User() {
     }
