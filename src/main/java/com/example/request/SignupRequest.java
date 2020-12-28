@@ -20,7 +20,7 @@ public class SignupRequest {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
     public String getFirstname() {
@@ -51,7 +51,7 @@ public class SignupRequest {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -59,7 +59,7 @@ public class SignupRequest {
         return this.role;
     }
 
-    public void setRole(Set<String> role) {
+    public void setRole(final Set<String> role) {
         this.role = role;
     }
 

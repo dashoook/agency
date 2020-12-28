@@ -3,16 +3,11 @@ package com.example.service.impl;
 import com.example.dto.UserDTO;
 import com.example.exception.ServiceException;
 import com.example.mapper.UserToUserDTOMapper;
-import com.example.models.User;
 import com.example.repository.UserRepository;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,10 +19,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserToUserDTOMapper userMapper;
 
-    //private Collection<? extends GrantedAuthority> authorities;
-  //  public Collection<? extends GrantedAuthority> getAuthorities() {
-      //  return authorities;
-  //  }
 
     @Override
     public UserDTO getUserById(final Long id) {
@@ -65,8 +56,4 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteUserById(id);
     }
 
-   // @Override
-   // public UserDTO loadUserByUsername(String username) throws UsernameNotFoundException {
-     //   return  userMapper.toDto(userRepository.findByUsername(username));
-    //}
 }

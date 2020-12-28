@@ -1,20 +1,15 @@
 package com.example.models;
 
 
-import com.example.dto.ERoleDTO;
-
-import javax.xml.bind.annotation.XmlEnumValue;
-
 public class Role {
     private Long id;
 
-   // @Enumerated(EnumType.STRING)
     private ERole name;
 
     public Role() {
     }
 
-    public Role(ERole name) {
+    public Role(final ERole name) {
         this.name = name;
     }
 
@@ -22,7 +17,7 @@ public class Role {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -30,12 +25,8 @@ public class Role {
         return name;
     }
 
-    public void setName(ERole name) {
+    public void setName(final ERole name) {
         this.name = name;
     }
 
-//    @Override
-//    public String toString() {
-//        return name.toString();
-//    }
 }

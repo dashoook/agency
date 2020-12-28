@@ -16,8 +16,8 @@ public class JwtResponse {
     private List<String> roles;
 
 
-    public JwtResponse(String accessToken, Long id, String username,  final String firstname, final String lastname,
-                       final LocalDate birth, List<String> roles) {
+    public JwtResponse(final String accessToken, final Long id, final String username,  final String firstname, final String lastname,
+                       final LocalDate birth, final List<String> roles) {
         this.token = accessToken;
         this.id = id;
         this.username = username;
@@ -31,7 +31,7 @@ public class JwtResponse {
         return token;
     }
 
-    public void setAccessToken(String accessToken) {
+    public void setAccessToken(final String accessToken) {
         this.token = accessToken;
     }
 
@@ -39,7 +39,7 @@ public class JwtResponse {
         return type;
     }
 
-    public void setTokenType(String tokenType) {
+    public void setTokenType(final String tokenType) {
         this.type = tokenType;
     }
 
@@ -47,7 +47,7 @@ public class JwtResponse {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -80,7 +80,7 @@ public class JwtResponse {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 

@@ -31,7 +31,7 @@ public class User {
         this.password = password;
     }
     public User(final Long id,final String username, final String firstname, final String lastname, final LocalDate birth,
-                final List<Order> orders,final String password, Set<Role> roles) {
+                final List<Order> orders,final String password, final Set<Role> roles) {
         this.id = id;
         this.username = username;
         this.firstname = firstname;
@@ -83,14 +83,14 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -98,7 +98,7 @@ public class User {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(final Set<Role> roles) {
         this.roles = roles;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.repository;
 
-import com.example.dto.UserDTO;
 import com.example.exception.ServiceException;
 import com.example.models.User;
 import org.springframework.stereotype.Repository;
@@ -20,14 +19,14 @@ public class UserRepository {
     private static Long lastId = 1L;
     private List<User> savedUsers;
 
-    public User findByUsername(String username) {
+    public User findByUsername(final String username) {
         return savedUsers.stream()
                 .filter(e -> e.getUsername().equals(username))
                 .findFirst()
                 .orElseThrow(() -> new ServiceException(400, "User with this username not found", null));
     }
 
-    public Boolean existsByUsername(String username) {//works
+    public Boolean existsByUsername(final String username) {//works
         return savedUsers.stream()
                 .anyMatch(e -> e.getUsername().equals(username));
     }

@@ -24,8 +24,9 @@ public class UserDetailsImpl implements UserDetails {
     final private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Long id, String username, final String firstname, final String lastname,
-                           final LocalDate birth, String password, Collection<? extends GrantedAuthority> authorities) {//Collection<? extends GrantedAuthority> authorities
+    public UserDetailsImpl(final Long id, final String username, final String firstname, final String lastname,
+                           final LocalDate birth, final String password, final Collection<? extends GrantedAuthority>
+                                   authorities) {
         this.id = id;
         this.username = username;
         this.firstname = firstname;
@@ -35,8 +36,8 @@ public class UserDetailsImpl implements UserDetails {
         this.authorities = authorities;
     }
 
-    public static UserDetailsImpl build(UserDTO user) {
-        List<GrantedAuthority> authorities = user.getRoles().stream()
+    public static UserDetailsImpl build(final UserDTO user) {
+        final List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toList());
 
@@ -69,10 +70,6 @@ public class UserDetailsImpl implements UserDetails {
         return firstname;
     }
 
-   // public void setAuthorities(Set<GrantedAuthority> authorities)
-   // {
-     //   this.authorities=authorities;
-    //}
 
     @Override
     public String getPassword() {
@@ -105,12 +102,12 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o)
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        UserDetailsImpl user = (UserDetailsImpl) o;
+        final UserDetailsImpl user = (UserDetailsImpl) o;
         return Objects.equals(id, user.id);
     }
 }

@@ -2,7 +2,6 @@ package com.example.repository;
 
 import com.example.exception.ServiceException;
 import com.example.models.Tour;
-import com.example.models.User;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;

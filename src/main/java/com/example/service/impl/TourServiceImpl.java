@@ -25,7 +25,7 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public List<TourDTO> getToursByCountry(String country) {
+    public List<TourDTO> getToursByCountry(final String country) {
         return tourRepository.getAllUsers().stream()
                 .map(e -> tourMapper.toDTO(e))
                 .filter(tourDTO1 -> tourDTO1.getCountry().equals(country))
@@ -58,14 +58,14 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public List<TourDTO> getAllToursByPriceLower(int price) {
+    public List<TourDTO> getAllToursByPriceLower(final int price) {
         return tourRepository.getAllUsers().stream()
                 .map(e -> tourMapper.toDTO(e))
                 .filter(tourDTO1 -> tourDTO1.getPrice() <= price)
                 .collect(Collectors.toList());
     }
     @Override
-    public List<TourDTO> getAllToursByPriceHigher(int price) {
+    public List<TourDTO> getAllToursByPriceHigher(final int price) {
         return tourRepository.getAllUsers().stream()
                 .map(e -> tourMapper.toDTO(e))
                 .filter(tourDTO1 -> tourDTO1.getPrice() >= price)
